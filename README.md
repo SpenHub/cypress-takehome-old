@@ -16,7 +16,16 @@ I wasn't quite sure how in-depth to make these tests so I tried to test all the 
 |"Dogs!" title visible|/|
 |12 Dog tiles present|/|  
 |Grid of \<breed\> pictures appear when clicking breed|/|      
-|||                                                                                                                                      |  | | 
+|Refresh clears previous search-term|/|                                                                                                                                      |  | | 
+
+## Network
+
+|Test Case|Pass?|
+|---------|-----|
+|Page-load: Network request to `dog.ceo/api/breeds/list/all`|/|
+|Dog-Selected: Network request to `dog.ceo/api/breed/{breed_name}/images`|/|
+|Second-load of dog-tile shouldn't make network request|/|
+
 
 
 ## UI/UX
@@ -33,19 +42,17 @@ I wasn't quite sure how in-depth to make these tests so I tried to test all the 
 ## Search Functionality
 |Test Case|Pass?|
 |---------|-----|
+|Searching for visible breed: Breed tile is returned|/|
+|Searching for non-visible breed: Breed tile is returned|/|
+|Partial-Match Search: Only show first 12 breeds|/|
+|Full-Match Search: Only show matching breed|/|
+
+#### Negative
+|Test Case|Pass?|
+|---------|-----|
 |Empty search box shows first 12 dog breeds| /| 
 |Non-letter charset results in "NO BREED MATCHES FOUND."|/|
-|Searching for known breed: Breed tile is returned|/|
-
-
-## Boundary
-
-|Test Case|Pass?|
-|---------|-----|
-
-## Negative
-|Test Case|Pass?|
-|---------|-----|
+|Searching for non-existent breed: "NO BREED MATCHES FOUND."|/|
 
 
 # Automated Test Info
