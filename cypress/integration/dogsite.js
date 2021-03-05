@@ -11,30 +11,24 @@ describe('Dog Site Test', () => {
         cy.get('[placeholder="search"]').as('searchbox')
     })
     describe ('Site Content', () => {
-        xit('Search bar visible with placeholder text', () => {
+        it('Search bar visible with placeholder text', () => {
             cy.get('@searchbox').should('be.visible').click()
         })
     
-        xit('Instruction Text Visible', () => {
+        it('Instruction Text Visible', () => {
             cy.contains('Click on a breed to see some images.').should('be.visible')
     
         })
 
-        xit('Dogs Title Logo Visible', () => {
+        it('Dogs Title Logo Visible', () => {
             cy.contains('Dogs!').should('be.visible')
     
         })
 
-        xit('12 Dog tiles present', () => {
+        it('12 Dog tiles present', () => {
             // This was extremely frustrating, the leading ' ' in the partial classname
             // was required... :eyeroll:
             cy.get('*[class^=" breed-menu_buttons"]').should('have.length', 12)
-        })
-
-        xit('Refresh clears previous search-term', () => {
-            cy.get('@searchbox').type('randomStr')
-            cy.reload()
-            cy.contains('randomStr').should('not.exist')
         })
 
         it('Grid of pictures appear when clicking breed', () => {
@@ -45,17 +39,44 @@ describe('Dog Site Test', () => {
             cy.get('*[class^="breed-gallery_loadMoreContainer"').should('be.visible')
             cy.get('*[class^="breed-gallery_imageItem"').should('have.length.gte', 0);
         })
+
+        it('Refresh clears previous search-term', () => {
+            cy.get('@searchbox').type('randomStr')
+            cy.reload()
+            cy.contains('randomStr').should('not.exist')
+        })
     })
     
-    xdescribe ('Network', () => {
+    // I have a feeling im doing these network interceptions all wrong, but hey I gave it
+    // a shot and they passed? 
+    describe ('Network', () => {
+        it('Page Load: Network request to */api/breeds/list/all', () => {
+            cy.intercept('**/list/all', () => {
+                cy.visit(DOG_SITE)
+                expect(req.statuscode).to.be('200')
+            })
+        })
+
+        it('Dog Selected: Network request to */api/breed/{breed_name}/images', () => {
+            cy.intercept('https://dog.ceo/api/breed/$aVISIBLE_DOGS[0]/images', () => {
+                cy.get('@searchbox').type(aVISIBLE_DOGS[0])
+                cy.get('*[class^=" breed-menu_buttons"]').click()
+                expect(req.body).to.include('https://images.dog.ceo/breeds/african')
+            })
+        })
+        
+
+        xit('Second load of dog-tile shouldn\'t make network request', () => {
+            // Not sure how to check that a network request wasn't made since im waiting
+            // on a potential callback to not resolve, hmm.
+        })
+    })
+    
+    describe ('UI/UX', () => {
     
     })
     
-    xdescribe ('UI/UX', () => {
-    
-    })
-    
-    xdescribe ('Search Functionality', () => {
+    describe ('Search Functionality', () => {
     
     })
 })
