@@ -10,49 +10,49 @@ I wasn't quite sure how in-depth to make these tests so I tried to test all the 
 
 |Test Case|Pass?|
 |---------|-----|
-|Search bar visible| / |
-|Search bar placeholder text present| / |
-|Instruction Text Visible| /|
-|"Dogs!" title visible|/|
-|12 Dog tiles present|/|  
-|Grid of \<breed\> pictures appear when clicking breed|/|      
-|Refresh clears previous search-term|/|                                                                                                                                      |  | | 
+|Search bar visible|:heavy_check_mark:|
+|Search bar placeholder text present|:heavy_check_mark:|
+|Instruction Text Visible|:heavy_check_mark:|
+|"Dogs!" title visible|:heavy_check_mark:|
+|12 Dog tiles present|:heavy_check_mark:|  
+|Grid of \<breed\> pictures appear when clicking breed|:heavy_check_mark:|      
+|Refresh clears previous search-term|:heavy_check_mark:|                                                                                                                                      |  | | 
 
 ## Network
 
 |Test Case|Pass?|
 |---------|-----|
-|Page-load: Network request to `dog.ceo/api/breeds/list/all`|[x]|
-|Dog-Selected: Network request to `dog.ceo/api/breed/{breed_name}/images`|[x]|
-|Second-load of dog-tile shouldn't make network request|[x]|
+|Page-load: Network request to `dog.ceo/api/breeds/list/all`|:heavy_check_mark:|
+|Dog-Selected: Network request to `dog.ceo/api/breed/{breed_name}/images`|:heavy_check_mark:|
+|Second-load of dog-tile shouldn't make network request|:heavy_check_mark:|
 
 
 
 ## UI/UX
 |Test Case|Pass?|
 |---------|-----|
-|Hovering on Dog button triggers emphasis|[x]|      
-|Clicking on dog button changes button style to show selection|[x]|      
-|Clicking on dog button shows dog tile with breed selection|[x]|   
-|Loading indicator (yellow bg) when clicking on dog-breed tile for first time|[x]|      
-|Responsive: 4x3 grid of dog breeds visible on default width|[x]|       
-|Responsive: 2x6 grid of dog breeds when width < 767px  |[x]|    
-|Responsive: Triggering small-width page-view: dog picture tile grid two-wide|[x]|      
+|Hovering on Dog button triggers emphasis|:heavy_check_mark:|      
+|Clicking on dog button changes button style to show selection|:heavy_check_mark:|      
+|Clicking on dog button shows dog tile with breed selection|:heavy_check_mark:|   
+|Loading indicator (yellow bg) when clicking on dog-breed tile for first time|:heavy_check_mark:|      
+|Responsive: 4x3 grid of dog breeds visible on default width|:heavy_check_mark:|       
+|Responsive: 2x6 grid of dog breeds when width < 767px  |:heavy_check_mark:|    
+|Responsive: Triggering small-width page-view: dog picture tile grid two-wide|:heavy_check_mark:|      
 
 ## Search Functionality
 |Test Case|Pass?|
 |---------|-----|
-|Searching for visible breed: Breed tile is returned|[x]|
-|Searching for non-visible breed: Breed tile is returned|[x]|
-|Partial-Match Search: Only show first 12 breeds|[x]|
-|Full-Match Search: Only show matching breed|[x]|
+|Searching for visible breed: Breed tile is returned|:heavy_check_mark:|
+|Searching for non-visible breed: Breed tile is returned|:heavy_check_mark:|
+|Partial-Match Search: Only show first 12 breeds|:heavy_check_mark:|
+|Full-Match Search: Only show matching breed|:heavy_check_mark:|
 
 #### Negative
 |Test Case|Pass?|
 |---------|-----|
-|Empty search box shows first 12 dog breeds| [x]| 
-|Non-letter charset results in "NO BREED MATCHES FOUND."|[x]|
-|Searching for non-existent breed: "NO BREED MATCHES FOUND."|[x]|
+|Empty search box shows first 12 dog breeds| :heavy_check_mark:| 
+|Non-letter charset results in "NO BREED MATCHES FOUND."|:heavy_check_mark:|
+|Searching for non-existent breed: "NO BREED MATCHES FOUND."|:heavy_check_mark:|
 
 
 # Automated Test Info
