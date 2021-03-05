@@ -66,14 +66,24 @@ describe('Dog Site Test', () => {
         })
         
 
-        xit('Second load of dog-tile shouldn\'t make network request', () => {
+        xit('Second load of dog-button shouldn\'t make network request', () => {
             // Not sure how to check that a network request wasn't made since im waiting
             // on a potential callback to not resolve, hmm.
         })
     })
     
     describe ('UI/UX', () => {
-    
+        it('Clicking dog-button changes button-style to show selection', () => {
+            cy.get('@searchbox').type(aVISIBLE_DOGS[0])
+            cy.get('*[class^=" breed-menu_buttons"]').click()
+            cy.get('*[class^="breed-menu_activeReady"]').should('have.css', 'background-color', 'rgb(106, 90, 205)')
+        })
+
+        it('Clicking dog button shows dog title with breed pictures', () => {
+            cy.get('@searchbox').type(aVISIBLE_DOGS[0])
+            cy.get('*[class^=" breed-menu_buttons"]').click()
+            cy.get('*[class^="breed-gallery_newBreedBanner"').find('span').should('be.visible')
+        })
     })
     
     describe ('Search Functionality', () => {
