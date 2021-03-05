@@ -22,37 +22,37 @@ I wasn't quite sure how in-depth to make these tests so I tried to test all the 
 
 |Test Case|Pass?|
 |---------|-----|
-|Page-load: Network request to `dog.ceo/api/breeds/list/all`|/|
-|Dog-Selected: Network request to `dog.ceo/api/breed/{breed_name}/images`|/|
-|Second-load of dog-tile shouldn't make network request|/|
+|Page-load: Network request to `dog.ceo/api/breeds/list/all`|[x]|
+|Dog-Selected: Network request to `dog.ceo/api/breed/{breed_name}/images`|[x]|
+|Second-load of dog-tile shouldn't make network request|[x]|
 
 
 
 ## UI/UX
 |Test Case|Pass?|
 |---------|-----|
-|Hovering on Dog button triggers emphasis|/|      
-|Clicking on dog button changes button style to show selection|/|      
-|Clicking on dog button shows dog tile with breed selection|/|   
-|Loading indicator (yellow bg) when clicking on dog-breed tile for first time||      
-|Responsive: 4x3 grid of dog breeds visible on default width|/|       
-|Responsive: 2x6 grid of dog breeds when width < 767px  |/|    
-|Responsive: Triggering small-width page-view: dog picture tile grid two-wide|/|      
+|Hovering on Dog button triggers emphasis|[x]|      
+|Clicking on dog button changes button style to show selection|[x]|      
+|Clicking on dog button shows dog tile with breed selection|[x]|   
+|Loading indicator (yellow bg) when clicking on dog-breed tile for first time|[x]|      
+|Responsive: 4x3 grid of dog breeds visible on default width|[x]|       
+|Responsive: 2x6 grid of dog breeds when width < 767px  |[x]|    
+|Responsive: Triggering small-width page-view: dog picture tile grid two-wide|[x]|      
 
 ## Search Functionality
 |Test Case|Pass?|
 |---------|-----|
-|Searching for visible breed: Breed tile is returned|/|
-|Searching for non-visible breed: Breed tile is returned|/|
-|Partial-Match Search: Only show first 12 breeds|/|
-|Full-Match Search: Only show matching breed|/|
+|Searching for visible breed: Breed tile is returned|[x]|
+|Searching for non-visible breed: Breed tile is returned|[x]|
+|Partial-Match Search: Only show first 12 breeds|[x]|
+|Full-Match Search: Only show matching breed|[x]|
 
 #### Negative
 |Test Case|Pass?|
 |---------|-----|
-|Empty search box shows first 12 dog breeds| /| 
-|Non-letter charset results in "NO BREED MATCHES FOUND."|/|
-|Searching for non-existent breed: "NO BREED MATCHES FOUND."|/|
+|Empty search box shows first 12 dog breeds| [x]| 
+|Non-letter charset results in "NO BREED MATCHES FOUND."|[x]|
+|Searching for non-existent breed: "NO BREED MATCHES FOUND."|[x]|
 
 
 # Automated Test Info
