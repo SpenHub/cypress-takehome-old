@@ -10,7 +10,7 @@ describe('Dog Site Test', () => {
         cy.visit(DOG_SITE)
         cy.get('[placeholder="search"]').as('searchbox')
     })
-    describe ('Site Content', () => {
+    xdescribe ('Site Content', () => {
         it('Search bar visible with placeholder text', () => {
             cy.get('@searchbox').should('be.visible').click()
         })
@@ -47,9 +47,29 @@ describe('Dog Site Test', () => {
         })
     })
     
+    describe ('Search Functionality', () => {
+        xit('Searching for initally-visible dog-button: valid search', () => {
+            cy.get('@searchbox').type(aVISIBLE_DOGS[9])
+            cy.get('*[class^=" breed-menu_buttons"]').should('have.length', 1)
+        })
+
+        it('Searching for non-visible dog-button: valid search', () => {
+            cy.get('@searchbox').type('shiba')
+            cy.get('*[class^=" breed-menu_buttons"]').should('have.length', 1)
+        })
+
+        it('Partial-Match search: Only show first 12 breeds', () => {
+
+        })
+
+        it('Full-Match search: only show matching breed', () => {
+
+        })
+    })
+
     // I have a feeling im doing these network interceptions all wrong, but hey I gave it
     // a shot and they passed? 
-    describe ('Network', () => {
+    xdescribe ('Network', () => {
         it('Page Load: Network request to */api/breeds/list/all', () => {
             cy.intercept('**/list/all', () => {
                 cy.visit(DOG_SITE)
@@ -72,22 +92,47 @@ describe('Dog Site Test', () => {
         })
     })
     
-    describe ('UI/UX', () => {
+    xdescribe ('UI/UX', () => {
+        const oWIDE_VIEWPORT = {
+            width: 1920,
+            height: 1080
+        }
+        const oNARROW_VIEWPORT = {
+            width: 700, 
+            height: 1080
+        }
+        beforeEach(() => {
+            cy.viewport(oWIDE_VIEWPORT.width, oWIDE_VIEWPORT.height)
+        })
         it('Clicking dog-button changes button-style to show selection', () => {
-            cy.get('@searchbox').type(aVISIBLE_DOGS[0])
+            cy.get('@searchbox').type(aVISIBLE_DOGS[4])
             cy.get('*[class^=" breed-menu_buttons"]').click()
             cy.get('*[class^="breed-menu_activeReady"]').should('have.css', 'background-color', 'rgb(106, 90, 205)')
         })
 
         it('Clicking dog button shows dog title with breed pictures', () => {
-            cy.get('@searchbox').type(aVISIBLE_DOGS[0])
+            cy.get('@searchbox').type(aVISIBLE_DOGS[5])
             cy.get('*[class^=" breed-menu_buttons"]').click()
             cy.get('*[class^="breed-gallery_newBreedBanner"').find('span').should('be.visible')
         })
-    })
-    
-    describe ('Search Functionality', () => {
-    
+        
+        // I'm not a fan of hardcoding pixel values but I wasn't sure how to get uncomputed css vars
+        it('Responsive: 4x3 grid of dog buttons on wide-width', () => {
+            cy.get('*[class^=" breed-menu_buttons"]').should('have.css', 'min-width', '345.6px')
+        })
+        
+        // I'd love to find out how you guys do responsive UI testing, that's something I've struggled with
+        it('Responsive: 2x6 grid of dog buttons with width < 767px', () => {
+            cy.viewport(oNARROW_VIEWPORT.width, oNARROW_VIEWPORT.height)
+            cy.get('*[class^=" breed-menu_buttons"]').should('have.css', 'min-width', '280px')
+        })
+
+        it('Responsive: 2x6 grid of dog-tiles search-result with small-width page', () => {
+            cy.viewport(oNARROW_VIEWPORT.width, oNARROW_VIEWPORT.height)
+            cy.get('@searchbox').type(aVISIBLE_DOGS[6])
+            cy.get('*[class^=" breed-menu_buttons"]').click()
+            cy.get('*[class^="breed-gallery_gallery"').should('have.css', 'width', '629.9999877929688px')
+        })
     })
 })
 
