@@ -10,10 +10,7 @@ I wasn't quite sure how in-depth to make these tests so I tried to test all the 
 
 |Test Case|Pass?|
 |---------|-----|
-|Search bar visible
-- Test1
-- Test2
-- Test3|:heavy_check_mark:|
+|Search bar visible|:heavy_check_mark:|
 |Search bar placeholder text present|:heavy_check_mark:|
 |Instruction Text Visible|:heavy_check_mark:|
 |"Dogs!" title visible|:heavy_check_mark:|
