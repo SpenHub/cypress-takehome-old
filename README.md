@@ -59,3 +59,4 @@ I wasn't quite sure how in-depth to make these tests so I tried to test all the 
 
  - I've implemented my automation-suite using cypress.io. I had some difficulty around programmatically selecting those dog-buttons as they're using dynamic class names. I spent more time than I care to admit on that. I understand it's not the best method of selecting an element on a page, but those were the only consistent things I saw in the DOM other than the DOM structure which is even ***more*** brittle. 
  - Additionally I wrote everything in JS so I wouldn't eat up too much time getting the tooling for TS setup
+ - NOTE: Some of the UI/UX tests may fail as their used computed CSS values which were finicky between firefox, chrome, and chromium (cypress views chromium as 'electron'). I understand that tests that use raw, hard-coded pixel-values are flaky, however I wasn't sure and didn't have the time to figure out how to test pre-computed css values like '18vw'. 
