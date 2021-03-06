@@ -23,3 +23,14 @@
 //
 // -- This will overwrite an existing command --
 // Cypress.Commands.overwrite("visit", (originalFn, url, options) => { ... })
+
+// Figured I should stay DRY and make these custom commands
+Cypress.Commands.add('search', (query) => {
+    cy.get('[placeholder="search"]').as('searchbox')
+    cy.get('@searchbox').type(query)
+})
+Cypress.Commands.add('searchAndClick', (query) => {
+    cy.get('[placeholder="search"]').as('searchbox')
+    cy.get('@searchbox').type(query)
+    cy.get('*[class^=" breed-menu_buttons"]').click()
+})
